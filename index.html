@@ -9,10 +9,22 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
 </head>
 <body>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
   <div id="app">Loading... Don't worry, It will be quick♂</div>
   <script>
     window.$docsify = {
-      loadSidebar: true
+      loadSidebar: true,
+      subMaxLevel: 3,
+      auto2top: true,
+      name: 'Document-Of-NothingLeftProject',
+      search: {
+        paths: 'auto',
+        placeholder: '上！————搜！',
+        noData: '喵喵喵？似乎没有找到你想要的',
+        depth: 6,
+      },
     }
   </script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
