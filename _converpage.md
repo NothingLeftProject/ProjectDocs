@@ -11,7 +11,8 @@
     <b>A time management system based on GTD.</b>
   </p>
 
-![color](#f0f0f0)
-
 [GitHub](<https://github.com/NothingLeftProject/NothingLeft>)
 [开始阅读](README.md)
+
+![color](#f0f0f0)
+
