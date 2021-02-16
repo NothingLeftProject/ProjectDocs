@@ -1,9 +1,19 @@
-# NothingLeft-Document
-- By Lanzhijiang
-- ![NonthingLeft-Logo](./image/NothingLeft-Logo.png)
+# NothingLeftProject-Document
+<p align="center">
+    <a href="https://nothingleftproject.github.io/NothingLeft">
+      <img alt="NothingLeftProject" src="./image/NothingLeft-Logo.png">
+    </a>
+  </p>
+  
+<p align="center">
+    <b>A time management system based on GTD.</b>
+  </p>
+
+
 ## 前言-Preface
-- 本文档是「NothingLeft」的说明文档，它将指导你使用、或一起开发本项目
+- 本文档是「NothingLeftProject」的文档，涵盖关于这个项目的所有方面，从代码解析到结构设计，一个不少
 - 如果您有更好地意见或者什么发现，请务必提出来，让我们一起协同进步
+- 本项目由Lanzhijiang维护开发，邮箱：lanzhijiang@foxmail.com
 
 ## In the beginning
 - **目的-Purpose:**
@@ -19,15 +29,8 @@
     - 那么我们来看看方便携带的手机如何？然而，只要是使用过的人都知道，手机顶多可以作为一个提醒工具，如果你要在上面进行stuff的收集或整理，都会变得相当不便
     - 此时，最好的选择当然就是本项目，其拥有强大的跨平台性能（WEB+语音交互），而且本项目的后端API允许你开发你自己喜欢的前端
 - **隐私性-Privacy:**
-  - 隐私性是当今互联网应用的一个关键点，如果你不能保证隐私性，那么也就没有什么未来可言了
-  - 不过本项目的隐私性你可以完全放心，因为本项目运行在你自己的服务器上面，其数据库也在你手里，完全没有泄露担心的必要
-  - 而且本项目的代码是完全开源的，不存在任何的隐私泄露后台
-  - 不过，如果你的服务器遭到了攻击亦或你的服务器提供商泄露了你的信息，那就另当别论了
-  - 不过考虑到我也会提供一个公开的平台，但我是不能对使用我方提供的公共平台作出任何隐私保护的承诺的，我只能保证我不会泄露隐私
+  - 本平台是允许自行搭建的，所以数据是完全掌握在你手中，不过如果你是使用别人搭建的NL，就不好说了
+  - 当然，即使你使用了别人的NL，我们仍然允许你拷贝自己的数据然后迁移到自己的设备上以保护隐私性
   
-## 索引-Index
-
-### 用户系统-UserSystem
-- [Index of UserSystem](/backend/user_system/index.md)
-- [用户管理器-UserManager](/backend/user_system/user_manager.md)
+## [索引-Index](guide.md)
 
