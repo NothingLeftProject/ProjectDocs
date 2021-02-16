@@ -1,10 +1,10 @@
 # NothingLeftProject-Document
 <p align="center">
-    <a href="https://nothingleftproject.github.io/NothingLeft">
+    <a href="https://nothingleftproject.github.io/ProjectDocs">
       <img alt="NothingLeftProject" src="./image/NothingLeft-Logo.png">
     </a>
   </p>
-  
+
 <p align="center">
     <b>A time management system based on GTD.</b>
   </p>
