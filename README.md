@@ -1,7 +1,7 @@
 # NothingLeftProject-Document
 <p align="center">
     <a href="https://nothingleftproject.github.io/ProjectDocs">
-      <img alt="NothingLeftProject" src="./image/NothingLeft-Logo.png">
+      <img alt="NothingLeftProject" src="./image/NothingLeftLogo2.jpg">
     </a>
   </p>
 
