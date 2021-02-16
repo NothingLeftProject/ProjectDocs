@@ -3,6 +3,7 @@
 # NothingLeftProject-Document
 - [GithubOrganzation](https://github.com/NothingLeftProject)
 
+## Navigation
 - [主页](README.md)
 - [使用](usage/README.md)
 - [基本设计](design/README.md)
@@ -11,5 +12,6 @@
 - [调查](research/README.md)
 - [更多](more/README.md)
 
+## More
 - edit on [github](https://github.com/NothingLeftProject/ProjectDocs)
 - contact me with **lanzhijiang@foxmail.com**
