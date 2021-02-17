@@ -10,7 +10,7 @@
   - [前端](classic_system/front/README.md)
 - [一体系统](all-in-one_system/README.md "一体系统设计")
 - [调查](research/README.md "调查")
-  - [2020.12.25](research/12.2.md)
+  - [2020.12.25](research/12.25.md)
 - [更多](more/README.md "NL相关")
   - [关于](more/about/README.md)
   - [路线图](more/roadmap/README.md)
