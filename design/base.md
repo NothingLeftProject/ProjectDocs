@@ -33,6 +33,8 @@
 
 ##### add_database
 
+- 添加数据库
+
 - ```python
   def add_database(self, db_name):
   
@@ -62,10 +64,14 @@
 
 ##### add_collection
 
+- 添加集合
+
 - 与上面的add_database大同小异，就不列举了
 - 只是会有两个参数：db_name, coll_name
 
 ##### delete_collection
+
+- 删除集合
 
 - 就是删除而已，与add_collection也大同小异
 
@@ -90,6 +96,8 @@
   - 不过就算不更新，这两个函数在第一次判断到「不存在」之后还会自动更新一遍，再检测一遍以防止遗漏
 
 ##### add_one_document
+
+- 添加一个记录
 
 - ```python
   def add_one_document(self, db_name, coll_name, docu):
@@ -137,11 +145,15 @@
 
 ##### add_many_documents
 
+- 添加多个记录
+
 - 就是向db-xx/coll-xx里一次性添加**多个**记录
 
 - 所以参数：docu_s必须是个列表，然后列表里面有的是一个记录，很正常
 
 ##### get_document(重点)
+
+- 获取记录
 
 - 这是个重点，不仅是因为这个函数很重要，更是因为这个函数的使用比较复杂
 
@@ -281,3 +293,57 @@
           ```
 
         - 那么这时候解析结果->0->"content" = "xxx"; -> 1 -> "content" = "aaa"
+
+##### update_many_documents(重点)
+
+- 更新多个记录
+
+- 这也是个关键，因为其功能非常重要，不过使用起来并没有很难
+
+- ```python
+  def update_many_documents(self, db_name, coll_name, query, values):
+  ```
+
+- 解释一下参数：
+
+  - 前面两个就算了，都明白的
+  - query是查找条件，也就是你要更新的对象，一个dict
+  - values是你要更新的值，一个dict，更新对象-更新值
+
+- 我们来举个例子看看：
+
+  - 我要更新一个集合里面的name为"yqq"：
+
+    - ```json
+      [{"_id": 0, "name": "yyh"}, {"_id": 1, "age": 15}]
+      ```
+
+  - 这时候，我们可以使
+
+    - ```json
+      query={"_id": 0}, values={"name": "yqq"}
+      ```
+
+      
+
+  - 实际上，也只能这样，因为我们不知道name的值，只知道name在_id=0的这个记录里
+
+  - 当然，如果我们想要更新的是name为"yyh"或name以"y"开头的记录，可以这样
+
+    - ```json
+      query={"name": { "$regex": "^F" }}, values={"name": "yqq"}
+      ```
+
+    - 更多这样的用法可以在网络上找到
+
+  - 差不多就是这样了
+
+##### delete_many_documents
+
+- 删除多个记录
+
+- ```python
+  def delete_many_documents(self, db_name, coll_name, query):
+  ```
+
+- query和update的要求是一样的，用法也是一样的，其它就没什么了
