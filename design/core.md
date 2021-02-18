@@ -43,10 +43,10 @@
           "stuff_id": "",  // 自动生成
           "tags": [],  // 可选，标签，方便分类
           "links": [],  // 可选，链接url什么的
-          "time": "",  // 可选，stuff执行的时间，如果有
-          "place": "",  // 可选，执行stuff的地点
+          "time": None,  // 可选，stuff执行的时间，如果有
+          "place": None,  // 可选，执行stuff的地点
           "level": 0,  // 可选，stuff的优先级
-          "status": ""  // 自动生成（也可自填），stuff的状态
+          "status": "wait_classify"  // 自动生成（也可自填），stuff的状态
       }
       ```
 
