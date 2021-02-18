@@ -29,72 +29,90 @@
   - 函数的参数就是创建一个stuff所需的所有信息，然后从模板中加载填入信息然后上传，最后返回一个stuff_id
 
     - stuff_id就用md5(content+salt)生成
+  
     - 但为了防止内容相同的stuff的id在巧合情况下还是重合了，我们需要创建一个存储所有stuff_id的记录在_id = 0的位置
-    - 如果重复了，就更改salt，直到没有重复为止
-    - 这个salt是随机数，以减少撞车次数，同样也比salt为递增数好
-
-  - 接着就是stuff的信息模板
-
-    - ```json
+  
+  - 如果重复了，就更改salt，直到没有重复为止
+  
+  - 这个salt通过下面这个函数生成，以减少撞车次数，同样也比salt为递增数好
+  
+    - ```python
+      def generate_random_key(self):
+      
+          """
+          生成随机钥匙
+          :return:
+          """
+          maka = string.digits + string.ascii_letters
+          maka_list = list(maka)
+          x = [random.choice(maka_list) for i in range(6)]
+          return ''.join(x)
+      ```
+  
+    位于——https://github.com/NothingLeftProject/NothingLeft/blob/master/backend/data/encryption.py
+  
+- 接着就是stuff的信息模板
+  
+  - ```json
       {
-          "content": "",  // 必填，必须是一句话
+        "content": "",  // 必填，必须是一句话
           "description": "",  // 可选，对基本内容的补充
           "create_date": "",  // 自动生成: YYYY-MM-DD/HH-mm
           "stuff_id": "",  // 自动生成
           "tags": [],  // 可选，标签，方便分类
-          "links": [],  // 可选，链接url什么的
+        "links": [],  // 可选，链接url什么的
           "time": None,  // 可选，stuff执行的时间，如果有
-          "place": None,  // 可选，执行stuff的地点
+        "place": None,  // 可选，执行stuff的地点
           "level": 0,  // 可选，stuff的优先级，数字，生效必须>0
-          "status": "wait_classify"  // 自动生成（也可自填），stuff的状态
+        "status": "wait_classify"  // 自动生成（也可自填），stuff的状态
       }
-      ```
-
+    ```
+  
       
-
-  #### 2、modify_stuff
-
-  - 第二就是修改日后stuff的信息
-
-  - 这样的函数需要的参数无非就是「修改对象」和「修改内容」，那么为了更准确，我们需要account, stuff_id, info
+  
+#### 2、modify_stuff
+  
+- 第二就是修改日后stuff的信息
+  
+- 这样的函数需要的参数无非就是「修改对象」和「修改内容」，那么为了更准确，我们需要account, stuff_id, info
     - account: 要修改的stuff的所属用户
     - stuff_id: 这个stuff的id
-    - info: 要修改的信息，一个字典，如{"level": 1}
-
-  #### 3、get_stuff
-
-  - 第三就是获取——能写入，也要能读取
-
-  - 我们的stuff信息是作为一个记录(docu)存储在数据库中的，而获取一个指定的信息也很容易：
-
-    - ```python
+  - info: 要修改的信息，一个字典，如{"level": 1}
+  
+#### 3、get_stuff
+  
+- 第三就是获取——能写入，也要能读取
+  
+- 我们的stuff信息是作为一个记录(docu)存储在数据库中的，而获取一个指定的信息也很容易：
+  
+  - ```python
       get_document(db_name, coll_name, query={"stuff_id": stuff_id}, mode=1)
-      ```
-
-    - 这个函数是经典系统的[backend.database.mongodb.MongoDBManipulator](https://github.com/NothingLeftProject/NothingLeft/blob/master/backend/database/mongodb.py)类的
-
-  - 为了方便，我们允许以此获取多个stuff，从而参数有：account, stuff_ids, get_all=False
-
-    - stuff_ids应该为list类型，返回自然也是个list
+    ```
+  
+  - 这个函数是经典系统的[backend.database.mongodb.MongoDBManipulator](https://github.com/NothingLeftProject/NothingLeft/blob/master/backend/database/mongodb.py)类的
+  
+- 为了方便，我们允许以此获取多个stuff，从而参数有：account, stuff_ids, get_all=False
+  
+  - stuff_ids应该为list类型，返回自然也是个list
     - get_all就是获取这个账户下面的所有stuff，get_all=True的话，就不需要stuff_ids了
-
+  
   #### 4、get_stuff_id
-
+  
   - 获取stuff_id，这是非常重要的
-
+  
   - stuff_id除了可以在生成和获取stuff时得到，其它就没有了，然而获取stuff_id也需要id，所以就诞生了这个函数
-
+  
   - 我们有几种不同的方式来获取不同的stuff_id以满足不同需求
-
-    - 对于首页展示，「最近添加的stuff」「还没有完成的stuff」「还没有分类的stuff」等等这样一系列要求
-
-    - 我们提供参数: mode来完成这件事情
-
+  
+  - 对于首页展示，「最近添加的stuff」「还没有完成的stuff」「还没有分类的stuff」等等这样一系列要求
+  
+  - 我们提供参数: mode来完成这件事情
+  
       - mode可以是数字(id)或字符串，他们是对应的；字符串是为了方便使用，数字是为了减少出错的几率
-
-    - 那么不同mode下的底层逻辑究竟是什么呢？
-
-      - 看看我们的要求都有什么样的规律
+  
+  - 那么不同mode下的底层逻辑究竟是什么呢？
+  
+    - 看看我们的要求都有什么样的规律
         - 最近添加的|还没有完成的|还没有分类的
       - 没错，这些stuff的分类都有着明显的依赖要素，而这些要素就可以在stuff的信息里找到
       - 打开NL前端首页显示的是「还没有分类的stuff」，显示多少个——没错，列表，用index来决定显示多少个
@@ -104,15 +122,15 @@
       - 所以实现不同list的计算最简单地方法就是在stuff信息更改时做出操作
         - 如某个stuff的状态从"wait_classification"变更为"wait_organization"，这样它就从「还没有分类的stuff」的列表里出去了
       - 为了更方便地监控stuff信息变更情况以操作，我们为一些常用操作提供单独函数，而其核心无一例外都是modify_stuff
-
+  
     - 因此，本函数应该像这样：
-
+  
     - ```python
       def get_stuff_id(self, mode, start_index=None, end_index=None)
       ```
-
+  
     - 如果你不是要获取全部内容的话，一定要填写start_index，end_index不填写就像[start_index:]而已
-
+  
     - 将start_index和end_index理解为[start_index:end_index]就可以了，实际上也是这么实现的
 
 #### 5、delete_stuff
