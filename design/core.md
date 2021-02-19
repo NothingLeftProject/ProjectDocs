@@ -29,7 +29,7 @@
   - 函数的参数就是创建一个stuff所需的所有信息，然后从模板中加载填入信息然后上传，最后返回一个stuff_id
 
     - stuff_id就用md5(content+salt)生成
-  
+    
     - 但为了防止内容相同的stuff的id在巧合情况下还是重合了，我们需要创建一个存储所有stuff_id的记录在_id = 0的位置
   
   - 如果重复了，就更改salt，直到没有重复为止
@@ -48,8 +48,9 @@
           x = [random.choice(maka_list) for i in range(6)]
           return ''.join(x)
       ```
-  
-    位于——https://github.com/NothingLeftProject/NothingLeft/blob/master/backend/data/encryption.py
+    
+    
+  位于——https://github.com/NothingLeftProject/NothingLeft/blob/master/backend/data/encryption.py
   
 - 接着就是stuff的信息模板
   
@@ -100,7 +101,7 @@
     - result_type是为了满足不同需求的返回存在的，其值可以为dict/list
       - 并且如果get_all=True且result_type="dict"，就会要求检测setting.json->"inboxSettings"->"allowGetAllStuffsInDict"视为为True，False则不予执行
     
-  
+
 #### 4、get_stuff_id
 - 获取stuff_id，这是非常重要的
   
@@ -110,7 +111,7 @@
   
     - 对于首页展示，「最近添加的stuff」「还没有完成的stuff」「还没有分类的stuff」等等这样一系列要求
     
-  - 我们提供参数: mode来完成这件事情
+  - 我们提供参数: mode，来完成这件事情
   
     - mode可以是数字(id)或字符串，他们是对应的；字符串是为了方便使用，数字是为了减少出错的几率
   
@@ -130,16 +131,16 @@
     - 因此，本函数应该像这样：
   
     - ```python
-      def get_stuff_id(self, mode, start_index=None, end_index=None)
+      def get_stuff_id(self, account, mode, start_index=None, end_index=None)
       ```
   
     - 如果你不是要获取全部内容的话，一定要填写start_index，end_index不填写就像[start_index:]而已
   
     - 将start_index和end_index理解为[start_index:end_index]就可以了，实际上也是这么实现的
 
-#### 5、delete_stuff
+#### 5、delete_many_stuffs
 
-- 有add就有delete，通过stuff_id和account删除就可以了
+- 有add就有delete，通过stuff_ids和account删除就可以了
 
 #### 6、generate_preset_stuff_list
 
