@@ -50,7 +50,7 @@
       ```
     
     
-  位于——https://github.com/NothingLeftProject/NothingLeft/blob/master/backend/data/encryption.py
+  位于——[./backend/data/encryption.py](https://github.com/NothingLeftProject/NothingLeft/blob/master/backend/data/encryption.py)
   
 - 接着就是stuff的信息模板
   
@@ -145,7 +145,7 @@
 #### 6、generate_preset_stuff_list
 
 - 就是上面提到的预设的储存着stuff_id的list，提供一个生成的函数，大概有用
-- 参数：list_name=None
+- 参数：list_name=None 和 account
   - 要生成的列表的名字（和mode一样，可以是字符串或者id），也就是可以指定生成哪些列表
   - 必须要是个列表
   - 如果不指定的话，默认为None，就是全部都生成一遍
