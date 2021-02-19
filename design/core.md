@@ -18,7 +18,7 @@
 
 - 看看它应该具备什么接口（函数）
 
-  #### 1、add_stuff
+#### 1、add_stuff
 
   - 首先就是收集——也就是记录stuff到inbox的函数。简单理解就是根据用户给出的信息添加stuff到数据库里去
 
@@ -71,7 +71,7 @@
       
   
 #### 2、modify_stuff
-  
+
 - 第二就是修改日后stuff的信息
   
 - 这样的函数需要的参数无非就是「修改对象」和「修改内容」，那么为了更准确，我们需要account, stuff_id, info
@@ -80,7 +80,7 @@
   - info: 要修改的信息，一个字典，如{"level": 1}
   
 #### 3、get_many_stuffs
-  
+
 - 第三就是获取——能写入，也要能读取
   
 - 我们的stuff信息是作为一个记录(docu)存储在数据库中的，而获取一个指定的信息也很容易：
@@ -99,17 +99,17 @@
     - get_all就是获取这个账户下面的所有stuff，get_all=True的话，就不需要stuff_ids了
     - result_type是为了满足不同需求的返回存在的，其值可以为dict/list
       - 并且如果get_all=True且result_type="dict"，就会要求检测setting.json->"inboxSettings"->"allowGetAllStuffsInDict"视为为True，False则不予执行
+    
   
-  #### 4、get_stuff_id
-  
-  - 获取stuff_id，这是非常重要的
+#### 4、get_stuff_id
+- 获取stuff_id，这是非常重要的
   
 - stuff_id除了可以在生成和获取stuff时得到，其它就没有了，然而获取stuff_id也需要id，所以就诞生了这个函数
   
 - 我们有几种不同的方式来获取不同的stuff_id以满足不同需求
   
     - 对于首页展示，「最近添加的stuff」「还没有完成的stuff」「还没有分类的stuff」等等这样一系列要求
-  
+    
   - 我们提供参数: mode来完成这件事情
   
     - mode可以是数字(id)或字符串，他们是对应的；字符串是为了方便使用，数字是为了减少出错的几率

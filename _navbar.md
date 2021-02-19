@@ -7,6 +7,8 @@
   - [核心层](design/core.md)
 - [经典系统](classic_system/README.md "经典系统设计")
   - [后端](classic_system/backend/README.md)
+    - [API协议](classic_system/backend/api_document/README.md)
+    - [CLI用法](classic_system/backend/cli_document/README.md)
   - [前端](classic_system/front/README.md)
 - [一体系统](all-in-one_system/README.md "一体系统设计")
 - [调查](research/README.md "调查")
