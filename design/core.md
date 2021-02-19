@@ -79,7 +79,7 @@
     - stuff_id: 这个stuff的id
   - info: 要修改的信息，一个字典，如{"level": 1}
   
-#### 3、get_stuff
+#### 3、get_many_stuffs
   
 - 第三就是获取——能写入，也要能读取
   
