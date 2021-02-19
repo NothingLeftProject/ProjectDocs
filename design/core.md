@@ -93,26 +93,28 @@
   
   - 但是其使用比较复杂，可以查阅：[MongoDBManipulator](design/base.md)里的get_document段落
   
-- 为了方便，我们允许以此获取多个stuff，从而参数有：account, stuff_ids, get_all=False
+- 为了方便，我们允许以此获取多个stuff，从而参数有：account, stuff_ids, get_all=False, result_type="list"
   
     - stuff_ids应该为list类型，返回自然也是个list
     - get_all就是获取这个账户下面的所有stuff，get_all=True的话，就不需要stuff_ids了
+    - result_type是为了满足不同需求的返回存在的，其值可以为dict/list
+      - 并且如果get_all=True且result_type="dict"，就会要求检测setting.json->"inboxSettings"->"allowGetAllStuffsInDict"视为为True，False则不予执行
   
   #### 4、get_stuff_id
   
   - 获取stuff_id，这是非常重要的
   
-  - stuff_id除了可以在生成和获取stuff时得到，其它就没有了，然而获取stuff_id也需要id，所以就诞生了这个函数
+- stuff_id除了可以在生成和获取stuff时得到，其它就没有了，然而获取stuff_id也需要id，所以就诞生了这个函数
   
 - 我们有几种不同的方式来获取不同的stuff_id以满足不同需求
   
-  - 对于首页展示，「最近添加的stuff」「还没有完成的stuff」「还没有分类的stuff」等等这样一系列要求
+    - 对于首页展示，「最近添加的stuff」「还没有完成的stuff」「还没有分类的stuff」等等这样一系列要求
   
-    - 我们提供参数: mode来完成这件事情
+  - 我们提供参数: mode来完成这件事情
   
     - mode可以是数字(id)或字符串，他们是对应的；字符串是为了方便使用，数字是为了减少出错的几率
   
-  - 那么不同mode下的底层逻辑究竟是什么呢？
+    - 那么不同mode下的底层逻辑究竟是什么呢？
   
       - 看看我们的要求都有什么样的规律
         - 最近添加的|还没有完成的|还没有分类的
