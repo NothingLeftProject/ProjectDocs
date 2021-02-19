@@ -91,9 +91,11 @@
   
   - 这个函数是经典系统的[backend.database.mongodb.MongoDBManipulator](https://github.com/NothingLeftProject/NothingLeft/blob/master/backend/database/mongodb.py)类的
   
+  - 但是其使用比较复杂，可以查阅：[MongoDBManipulator](design/base.md)里的get_document段落
+  
 - 为了方便，我们允许以此获取多个stuff，从而参数有：account, stuff_ids, get_all=False
   
-  - stuff_ids应该为list类型，返回自然也是个list
+    - stuff_ids应该为list类型，返回自然也是个list
     - get_all就是获取这个账户下面的所有stuff，get_all=True的话，就不需要stuff_ids了
   
   #### 4、get_stuff_id
@@ -102,17 +104,17 @@
   
   - stuff_id除了可以在生成和获取stuff时得到，其它就没有了，然而获取stuff_id也需要id，所以就诞生了这个函数
   
-  - 我们有几种不同的方式来获取不同的stuff_id以满足不同需求
+- 我们有几种不同的方式来获取不同的stuff_id以满足不同需求
   
   - 对于首页展示，「最近添加的stuff」「还没有完成的stuff」「还没有分类的stuff」等等这样一系列要求
   
-  - 我们提供参数: mode来完成这件事情
+    - 我们提供参数: mode来完成这件事情
   
-      - mode可以是数字(id)或字符串，他们是对应的；字符串是为了方便使用，数字是为了减少出错的几率
+    - mode可以是数字(id)或字符串，他们是对应的；字符串是为了方便使用，数字是为了减少出错的几率
   
   - 那么不同mode下的底层逻辑究竟是什么呢？
   
-    - 看看我们的要求都有什么样的规律
+      - 看看我们的要求都有什么样的规律
         - 最近添加的|还没有完成的|还没有分类的
       - 没错，这些stuff的分类都有着明显的依赖要素，而这些要素就可以在stuff的信息里找到
       - 打开NL前端首页显示的是「还没有分类的stuff」，显示多少个——没错，列表，用index来决定显示多少个
