@@ -28,6 +28,7 @@
 
 - 首先是初始化函数
 - 它具有一个可以调控的参数：database_name: 也就是使用哪个数据库，对应设置中的"adress"里的key
+  
   - 如果database_name无法找到，会在log里报错
 - init会生成一个操作对象：self.server，然后自动获取目前有的数据库名称
 
@@ -347,3 +348,112 @@
   ```
 
 - query和update的要求是一样的，用法也是一样的，其它就没什么了
+
+
+
+#### Memecached
+
+- 这个数据库并不是很重要，它甚至可能会在将来被移除，这是因为它只是一个缓存类型的数据库，只要一关机数据就会丢失，所以才有了MongoDB的使用
+
+- 所以呢，我也并没有打算在这里好好介绍它
+
+- 它的操作类是：MemcachedManipulator
+
+  - 位于[./backend/database/memcached.py](https://github.com/NothingLeftProject/NothingLeft/blob/master/backend/database/memcached.py)
+
+- 它的操作都很简单，全部函数名以_开头，有下面这些函数，但都不重要，因为我在实际开发中并没有看到他们的用处
+
+  所以我只是在这里把他们简单的列出来而已：
+
+  - ```python
+    def _set(self, key, value):
+        """
+        设置键值（若键存在，则replace，若键不存在，则add）
+        :param key 键
+        :param value 值
+        :return bool
+        """
+    ```
+
+  -  ```python
+  def _add(self, key, value):
+        """
+         添加（未存在的键）的值
+         :param key 键
+         :param value 值
+         :return bool
+         """
+     ```
+
+  - ```python
+    def _replace(self, key, value):
+        """
+        替换（已存在键）的值
+        :param key 键
+        :param value 值
+        :return bool
+        """
+    ```
+
+  - ```python
+    def _set_multi(self, param):
+        """
+        设置多个键值
+        :param param dict形式的数据
+        :return bool
+        """
+    ```
+
+  - ```python
+    def _delete(self, key):
+        """
+        删除一个键值
+        :param key: 要删除的键（同时删除了值）
+        :return bool
+        """
+    ```
+
+  - ```python
+    def _delete_multi(self, param):
+        """
+        删除多个键值
+        :param param: 要删除的键的list
+        :return bool
+        """
+    ```
+
+  - ```python
+    def _get(self, key):
+        """
+        获取键的值
+        :param key 键
+        :return any
+        """
+    ```
+
+  - ```python
+    def _get_multi(self, param):
+        """
+        获取多个键的值
+        :param param: 要获取的键的list
+        :return any
+        """
+    ```
+
+  - ```python
+    def _increase(self, key):
+        """
+        key的值自加
+        :param key 键
+        :return bool
+        """
+    ```
+
+  - ```python
+    def _decrease(self, key):
+        """
+        key的值自加
+        :param key 键
+        :return bool
+        """
+    ```
