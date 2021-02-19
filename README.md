@@ -4,10 +4,13 @@
       <img alt="NothingLeftProject" src="./image/NothingLeftLogo2.jpg">
     </a>
   </p>
-
 <p align="center">
-    <b>A time management system based on GTD.</b>
+    <b>NothingLeft</b>
   </p>
+<p align="center">
+    A time management system based on GTD.
+  </p>
+
 
 
 ## 前言-Preface
