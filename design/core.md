@@ -143,10 +143,14 @@
 ##### get_stuff_id_from_condition
 
 - ```python
-  def get_stuff_id_from_condition(self, account, condition, length=None, from_cache=True, cache=True):
+  def get_stuff_id_from_condition(self, account, condition, start_index=None, end_index=None, from_cache=True, cache=True):
   ```
 
 - 直接上函数，我们来看一下
+
+  - start_index和end_index与上面的用法相同
+  - from_cache是指从memcached数据库中加载
+  - cache是指在生成新的列表以后是否缓存到memcached数据库中去
 
 
 #### 5、delete_many_stuffs

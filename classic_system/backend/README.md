@@ -13,7 +13,7 @@
 
   所以才叫做**API**而不是HTTP服务器
 
-- 请不要把这个部分和API协议混淆了，本系统的API协议会在[别的地方](classic_system/backend/api_document/README.md)详细说明
+- 请不要把这个部分和API协议混淆了，本系统的HTTP-API协议会在[别的地方](classic_system/backend/http_api_document/README.md)详细说明
 
 - 本部分实现的功能是：
 
