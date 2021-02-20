@@ -51,6 +51,7 @@
 
   - 用你的方法打开NothingLeft/backend/data/json/setting.json
   - 将"databaseSettings"->"mongodb"->"address"->"default"和"databaseSettings"->"memcached"->"address"->"default"改成在步骤一里面获得的地址
+  - 将其中的hostIP字段清空
 
 - setting.json的作用不止如此，现在允许我向你介绍一下：
 
