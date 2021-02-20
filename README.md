@@ -1,4 +1,4 @@
-# NothingLeftProject-Document
+# 
 <p align="center">
     <a href="https://nothingleftproject.github.io/ProjectDocs">
       <img alt="NothingLeftProject" src="./image/NothingLeftLogo2.jpg">
@@ -10,6 +10,17 @@
 <p align="center">
     A time management system based on GTD.
   </p>
+<p align="center">
+    <img src="https://svg.hamm.cn/badge.svg?key=DocLicense&&value=Apache2.0">
+    <img src="https://svg.hamm.cn/badge.svg?key=E-mail&&value=lanzhijiang@foxmail.com">
+</p>
+
+
+
+
+
+# NothingLeftProject-Document
+
 
 
 
