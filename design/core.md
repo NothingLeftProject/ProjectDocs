@@ -50,8 +50,9 @@
       ```
     
     
+
   位于——[./backend/data/encryption.py](https://github.com/NothingLeftProject/NothingLeft/blob/master/backend/data/encryption.py)
-  
+
 - 接着就是stuff的信息模板
   
   - ```json
@@ -104,10 +105,11 @@
 
 #### 4、get_stuff_id
 - 获取stuff_id，这是非常重要的
-  
 - stuff_id除了可以在生成和获取stuff时得到，其它就没有了，然而获取stuff_id也需要id，所以就诞生了这个函数
-  
-- 我们有几种不同的方式来获取不同的stuff_id以满足不同需求
+- 但是，在这里我们要分成两种模式：从预设列表中获取 和 根据条件即时筛选
+
+##### get_stuff_id_from_preset  
+- 我们有几种不同的预设来获取不同的stuff_id以满足不同需求
   
     - 对于首页展示，「最近添加的stuff」「还没有完成的stuff」「还没有分类的stuff」等等这样一系列要求
     
@@ -131,12 +133,21 @@
     - 因此，本函数应该像这样：
   
     - ```python
-      def get_stuff_id(self, account, mode, start_index=None, end_index=None)
+      def get_stuff_id_from_preset(self, account, mode, start_index=None, end_index=None)
       ```
   
     - 如果你不是要获取全部内容的话，一定要填写start_index，end_index不填写就像[start_index:]而已
   
     - 将start_index和end_index理解为[start_index:end_index]就可以了，实际上也是这么实现的
+
+##### get_stuff_id_from_condition
+
+- ```python
+  def get_stuff_id_from_condition(self, account, condition, length=None, from_cache=True, cache=True):
+  ```
+
+- 直接上函数，我们来看一下
+
 
 #### 5、delete_many_stuffs
 
