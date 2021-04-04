@@ -11,13 +11,9 @@
 ### 收集-COLLECT
 
 - 开始GTD的第一件事情就是收集stuff，把你要做的事情都记录下来，放到一个叫做**INBOX**的地方
-- 因此，为了实现这个功能，我们需要提供一个能实现「收集」这个功能的接口
-- 实现「收集」这个功能的文件就叫「InboxManager」吧，挺贴切的
-- 现在，让我们看看它的基本设计吧！
-  - [InboxManager](/design/inbox_manager.md)
+- 所以，请看：[I收集-Collect](/design/collect.md)
 
 ### 分类-CLASSIFY
 
-- 作为在收集完成堆stuff之后，将其处理并整理，起着至关重要的分流作用的分类，我们采用「ClassificationManager」来实现
-- 对stuff的添加删除、classification的添加删除、查找、判断等等都在这里实现
-  - 现在，去看看它究竟是怎么样的吧：[ClassificationManager](/design/classification_manager.md)
+- 作为在收集完成堆stuff之后，将其处理并整理，起着至关重要的分流作用的一个重要步骤，我们需要详细介绍
+- 请看：[分类-Classify](/design/classify.md)
