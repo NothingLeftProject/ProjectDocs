@@ -20,7 +20,7 @@
 
 - 首先，后端是需要一个数据库来支撑了，这个数据库，不，有两个，它们是：MongoDB和Memcached
 - 所以，首先我们要安装好两个数据库并将数据库地址填入后端的/data/json/setting.json中
-- [STEP.1-安装数据库](usage/install_database.md)
+- [STEP.1-安装数据库](/usage/install_database.md)
 
 - 现在我们进入第二步
 
