@@ -47,19 +47,27 @@
 
   - ```json
     {
-      "content": "",  // 必填，必须是一句话
+        "content": "",  // 必填，必须是一句话
         "description": "",  // 可选，对基本内容的补充
-        "create_date": "",  // 自动生成: YYYY-MM-DD/HH-mm
+        "create_date": "",  // 必选: YYYY-MM-DD/HH-mm 与客户端同步
+        "lastOperateTimeStamp": "", // 必选，最后一次操作时间长，即创建时时间戳，与客户端同步
         "stuff_id": "",  // 自动生成
         "tags": [],  // 可选，标签，方便分类
-      "links": [],  // 可选，链接url什么的
+        "links": [],  // 可选，链接url什么的
         "time": None,  // 可选，stuff执行的时间，如果有
-      "place": None,  // 可选，执行stuff的地点
+        "place": None,  // 可选，执行stuff的地点
         "level": 0,  // 可选，stuff的优先级，数字，生效必须>0
-      "status": "wait_classify"  // 自动生成（也可自填），stuff的状态
+        "status": "wait_classify"  // 自动生成（也可自填），stuff的状态
+        "belongingClassificationId": "",  // 所属分类id
+    "isAchieved": false,  // 是否归档
+        "hasCustomAttribute": false,  // 是否有自定义属性
+        "customizedAttributes": [],  // 自定义属性列表
+        "events": [],  // event列表
+        "eventsStatus": [],  // event状态
+        "isSplitAsEvent": false  // 是否有拆分为event
     }
     ```
-
+    
       
 
 #### 2、modify_stuff

@@ -11,7 +11,7 @@
 ### 收集-COLLECT
 
 - 开始GTD的第一件事情就是收集stuff，把你要做的事情都记录下来，放到一个叫做**INBOX**的地方
-- 所以，请看：[I收集-Collect](/design/collect.md)
+- 所以，请看：[收集-Collect](/design/collect.md)
 
 ### 分类-CLASSIFY
 
